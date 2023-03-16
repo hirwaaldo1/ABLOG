@@ -5,18 +5,16 @@ import SearchInput from "../../ui/SearchInput";
 import { useDispatch } from "react-redux";
 import { set } from "../../../features/articles";
 import { useGetArticlesQuery } from "../../../services/articlesApi";
-import { update } from "../../../features/publishers";
 import Slider from "react-slick";
 import settings from "../../../config/reactSlickSetting";
 export default function Navigation() {
   const { data: publishers, isLoading } = useGetPublisherQuery();
   const dispatch = useDispatch();
-  const [whichTab, setWhichTab] = useState();
+  const [whichTab, setWhichTab] = useState("headlines");
   const { data: articles } = useGetArticlesQuery(whichTab);
   useEffect(() => {
     if (articles) {
       dispatch(set(articles));
-      dispatch(update(whichTab));
     }
   }, [articles, dispatch, whichTab]);
 

@@ -9,12 +9,17 @@ export const articlesApi = createApi({
         if (publisher) {
           return publisher === "headlines"
             ? `top-headlines?country=us&apiKey=${REACT_APP_API_KEY}&pageSize=10`
-            : `top-headlines?sources=${publisher}&apiKey=${REACT_APP_API_KEY}`;
+            : `top-headlines?sources=${publisher}&apiKey=${REACT_APP_API_KEY}&pageSize=10`;
         }
       },
-
+      transformResponse: (response) => response.articles,
+    }),
+    searchArticles: builder.query({
+      query: (keyword) => {
+        return `everything?q=${keyword}&apiKey=${REACT_APP_API_KEY}&pageSize=10`;
+      },
       transformResponse: (response) => response.articles,
     }),
   }),
 });
-export const { useGetArticlesQuery } = articlesApi;
+export const { useGetArticlesQuery, useSearchArticlesQuery } = articlesApi;

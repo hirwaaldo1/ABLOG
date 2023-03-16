@@ -6,9 +6,14 @@ export default function Header() {
         <span className="text-2xl font-normal">BlOG</span>
       </a>
       <div className="">
-        <button className="bg-transparent border text-gray-900 border-gray-900 rounded-full pt-1.5 pb-2 px-4">
+        <a
+          href="https://www.hirwaaldo.com/#Contact"
+          target="_blank"
+          rel="noreferrer"
+          className="bg-transparent border text-gray-900 border-gray-900 rounded-full pt-1.5 pb-2 px-4"
+        >
           Say Hi!
-        </button>
+        </a>
       </div>
     </div>
   );

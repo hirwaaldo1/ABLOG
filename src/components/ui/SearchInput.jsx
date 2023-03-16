@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { Search, X } from "react-feather";
-import { useDispatch, useSelector } from "react-redux";
-import { find } from "../../features/articles";
-import { useGetArticlesQuery } from "../../services/articlesApi";
+import { useDispatch } from "react-redux";
+import { set } from "../../features/articles";
+import { useSearchArticlesQuery } from "../../services/articlesApi";
 
 export default function SearchInput() {
   const [search, setSearch] = useState("");
-  const whichTab = useSelector((state) => state.publishers);
-  const { data } = useGetArticlesQuery(whichTab);
+  const { data: article } = useSearchArticlesQuery(search);
   const dispatch = useDispatch();
   function searchArticle(event) {
     event.preventDefault();
-    dispatch(find({ keyword: search, oldData: data }));
+    dispatch(set(article));
   }
   return (
     <form className="flex gap-2 items-center w-full" onSubmit={searchArticle}>
@@ -24,11 +23,16 @@ export default function SearchInput() {
         placeholder="Search..."
       />
       {search.length > 0 && (
-        <X
-          size={16}
-          className="bg-gray-300 bg-opacity-60 rounded-full p-0.5 cursor-pointer"
-          onClick={() => setSearch("")}
-        />
+        <div className="flex items-center gap-1">
+          <button className="block h-full text-sm bg-gray-800 text-white rounded-sm px-2 cursor-pointer">
+            find
+          </button>
+          <X
+            size={16}
+            className="bg-gray-300 bg-opacity-60 rounded-full p-0.5 cursor-pointer"
+            onClick={() => setSearch("")}
+          />
+        </div>
       )}
     </form>
   );

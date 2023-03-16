@@ -19,6 +19,7 @@ export default function Blog() {
       dispatch(set(headlines));
     }
   }, [dispatch, headlines]);
+
   return (
     <>
       {isError && <NotFound />}
