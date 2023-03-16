@@ -3,15 +3,16 @@ const articlesSlice = createSlice({
   name: "articles",
   initialState: [],
   reducers: {
-    add: (state, action) => {
-      state.push({
-        id: state[state.length - 1]?.id + 1 || 1,
-        title: action.payload.title,
-        checked: false,
+    set: (state, action) => {
+      return (state = action.payload);
+    },
+    find: (state, action) => {
+      return action.payload.oldData.filter((article) => {
+        return article.title.toLowerCase().includes(action.payload.keyword);
       });
     },
   },
 });
 
-export const { add } = articlesSlice.actions;
+export const { set, find } = articlesSlice.actions;
 export default articlesSlice.reducer;

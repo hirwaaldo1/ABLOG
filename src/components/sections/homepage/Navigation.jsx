@@ -1,10 +1,22 @@
-import { useState } from "react";
-import { Search } from "react-feather";
+import { useEffect, useState } from "react";
 import { useGetPublisherQuery } from "../../../services/publishersApi";
 import Skeleton from "react-loading-skeleton";
+import SearchInput from "../../ui/SearchInput";
+import { useDispatch } from "react-redux";
+import { set } from "../../../features/articles";
+import { useGetArticlesQuery } from "../../../services/articlesApi";
+import { update } from "../../../features/publishers";
 export default function Navigation() {
   const { data: publishers, isLoading } = useGetPublisherQuery();
-  const [whichTab, setWhichTab] = useState("all");
+  const dispatch = useDispatch();
+  const [whichTab, setWhichTab] = useState();
+  const { data: articles } = useGetArticlesQuery(whichTab);
+  useEffect(() => {
+    if (articles) {
+      dispatch(set(articles));
+      dispatch(update(whichTab));
+    }
+  }, [articles, dispatch, whichTab]);
   return (
     <div className="border-b-2 border-gray-900 py-3">
       <ul className="flex flex-wrap text-base justify-center md:justify-start space-x-6">
@@ -17,9 +29,11 @@ export default function Navigation() {
         ) : (
           <>
             <li
-              className={`text-md cursor-pointer ${
-                whichTab === "all" && "underline"
-              }`}
+              onClick={() => {
+                setWhichTab("headlines");
+                dispatch(set(articles));
+              }}
+              className={`text-md cursor-pointer ${!whichTab && "underline"}`}
             >
               All
             </li>
@@ -39,13 +53,8 @@ export default function Navigation() {
         <li className="hidden md:block">
           <span className="block h-full w-0.5 bg-black" />
         </li>
-        <li className="flex gap-2 items-center w-full md:w-auto">
-          <Search size={17} />
-          <input
-            type="text"
-            className="outline-none placeholder:text-black"
-            placeholder="Search..."
-          />
+        <li className="w-full md:w-auto">
+          <SearchInput />
         </li>
       </ul>
     </div>

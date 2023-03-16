@@ -1,17 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 const publishersSlice = createSlice({
   name: "publishers",
-  initialState: [],
+  initialState: "headlines",
   reducers: {
-    add: (state, action) => {
-      state.push({
-        id: state[state.length - 1]?.id + 1 || 1,
-        title: action.payload.title,
-        checked: false,
-      });
+    update: (state, action) => {
+      return (state = action.payload);
     },
   },
 });
 
-export const { add } = publishersSlice.actions;
+export const { update } = publishersSlice.actions;
 export default publishersSlice.reducer;

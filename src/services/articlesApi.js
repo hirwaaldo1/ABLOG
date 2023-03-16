@@ -4,11 +4,17 @@ export const articlesApi = createApi({
   reducerPath: "articlesApi",
   baseQuery: fetchBaseQuery({ baseUrl: REACT_APP_API_URL }),
   endpoints: (builder) => ({
-    getHeadlines: builder.query({
-      query: () =>
-        `top-headlines?country=us&apiKey=${REACT_APP_API_KEY}&pageSize=10`,
+    getArticles: builder.query({
+      query: (publisher) => {
+        if (publisher) {
+          return publisher === "headlines"
+            ? `top-headlines?country=us&apiKey=${REACT_APP_API_KEY}&pageSize=10`
+            : `top-headlines?sources=${publisher}&apiKey=${REACT_APP_API_KEY}`;
+        }
+      },
+
+      transformResponse: (response) => response.articles,
     }),
   }),
 });
-
-export const { useGetHeadlinesQuery } = articlesApi;
+export const { useGetArticlesQuery } = articlesApi;
