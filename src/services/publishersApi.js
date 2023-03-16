@@ -5,7 +5,8 @@ export const publishersApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: REACT_APP_API_URL }),
   endpoints: (builder) => ({
     getPublisher: builder.query({
-      query: () => `top-headlines/sources?apiKey=${REACT_APP_API_KEY}`,
+      query: () =>
+        `top-headlines/sources?country=us&apiKey=${REACT_APP_API_KEY}`,
     }),
   }),
 });

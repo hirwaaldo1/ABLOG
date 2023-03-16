@@ -8,7 +8,9 @@ const articlesSlice = createSlice({
     },
     find: (state, action) => {
       return action.payload.oldData.filter((article) => {
-        return article.title.toLowerCase().includes(action.payload.keyword);
+        return article.title
+          .toLowerCase()
+          .includes(action.payload.keyword.toLowerCase());
       });
     },
   },

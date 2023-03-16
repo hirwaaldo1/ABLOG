@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import PageWrapper from "./components/wrappers/PageWrapper";
 import "./index.css";
-import "swiper/css";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

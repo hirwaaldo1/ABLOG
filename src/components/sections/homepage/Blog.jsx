@@ -26,7 +26,6 @@ export default function Blog() {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-5">
         {isLoading ? (
           <>
-            {" "}
             {Array(10)
               .fill()
               .map((v, k) => {

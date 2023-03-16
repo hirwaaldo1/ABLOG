@@ -5,3 +5,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  @apply bg-gray-900 hover:bg-gray-900 focus:bg-gray-900 bg-opacity-60 rounded-full flex justify-center p-0.5 w-5 h-5 cursor-pointer z-50;
+}
