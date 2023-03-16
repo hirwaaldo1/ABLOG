@@ -30,7 +30,7 @@ export default function Navigation() {
               <Skeleton key={`tab-skeleton-${index}`} width={100} />
             ))
         ) : (
-          <Slider {...settings} className="w-1/2 mx-6">
+          <Slider {...settings} className="w-11/12 md:w-1/2 mx-6">
             <div
               onClick={() => {
                 setWhichTab("headlines");
