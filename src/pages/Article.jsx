@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import getMonthName from "../utils/getMonthName";
+import getDateTime from "../utils/getDateTime";
 
 export default function Article() {
   const { state } = useLocation();
@@ -12,9 +12,7 @@ export default function Article() {
         <div className="flex justify-between">
           <p className="font-bold">{state.source.name}</p>
           <div className="flex gap-2 items-center text-gray-500 text-base font-light">
-            <span>
-              {getMonthName(date.getMonth())} {date.getDay()}
-            </span>
+            <span>{getDateTime(date.getMonth(), date.getDay())}</span>
             <span className="block w-1 h-1 rounded-full bg-gray-700" />
             <span>{date.getMinutes()} min</span>
           </div>

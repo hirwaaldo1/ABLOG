@@ -8,10 +8,12 @@ export default function SearchInput() {
   const [search, setSearch] = useState("");
   const { data: article } = useSearchArticlesQuery(search);
   const dispatch = useDispatch();
+
   function searchArticle(event) {
     event.preventDefault();
     dispatch(setArticles(article));
   }
+
   return (
     <form className="flex gap-2 items-center w-full" onSubmit={searchArticle}>
       <Search size={17} />

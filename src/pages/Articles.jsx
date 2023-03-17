@@ -10,7 +10,7 @@ export default function Articles() {
         <ArrowLeft className="bg-gray-100 rounded-full" />
         <span>Back</span>
       </Link>
-      <Blog {...state} />
+      <Blog whichTab={state.whichTab} />
     </div>
   );
 }

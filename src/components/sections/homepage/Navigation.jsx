@@ -5,6 +5,7 @@ import SearchInput from "../../ui/SearchInput";
 import Slider from "react-slick";
 import settings from "../../../config/reactSlickSetting";
 import { Link } from "react-router-dom";
+
 export default function Navigation() {
   const { data: publishers, isLoading } = useGetPublisherQuery();
   const [whichTab, setWhichTab] = useState("");
