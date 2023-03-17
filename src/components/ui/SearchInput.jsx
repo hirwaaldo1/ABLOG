@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search, X } from "react-feather";
 import { useDispatch } from "react-redux";
-import { set } from "../../features/articles";
+import { setArticles } from "../../features/articles";
 import { useSearchArticlesQuery } from "../../services/articlesApi";
 
 export default function SearchInput() {
@@ -10,7 +10,7 @@ export default function SearchInput() {
   const dispatch = useDispatch();
   function searchArticle(event) {
     event.preventDefault();
-    dispatch(set(article));
+    dispatch(setArticles(article));
   }
   return (
     <form className="flex gap-2 items-center w-full" onSubmit={searchArticle}>

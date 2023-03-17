@@ -3,11 +3,11 @@ const articlesSlice = createSlice({
   name: "articles",
   initialState: [],
   reducers: {
-    set: (state, action) => {
+    setArticles: (state, action) => {
       return (state = action.payload);
     },
   },
 });
 
-export const { set, find } = articlesSlice.actions;
+export const { setArticles } = articlesSlice.actions;
 export default articlesSlice.reducer;

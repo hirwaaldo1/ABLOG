@@ -1,25 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setArticles } from "../../../features/articles";
 import { useGetArticlesQuery } from "../../../services/articlesApi";
 import Card from "../../ui/Card";
 import CardSkeleton from "../../ui/CardSkeleton";
 import NotFound from "../../ui/NotFound";
 
-export default function Blog() {
-  const {
-    data: headlines,
-    isLoading,
-    isError,
-  } = useGetArticlesQuery("headlines");
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.articles);
-  useEffect(() => {
-    if (headlines) {
-      dispatch(setArticles(headlines));
-    }
-  }, [dispatch, headlines]);
-
+export default function Blog({ whichTab }) {
+  const { data, isError, isLoading } = useGetArticlesQuery(whichTab);
   return (
     <>
       {isError && <NotFound />}
@@ -38,6 +23,7 @@ export default function Blog() {
           })
         )}
       </div>
+
       {data?.length === 0 && <NotFound />}
     </>
   );

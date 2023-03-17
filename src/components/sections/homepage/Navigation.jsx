@@ -1,22 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGetPublisherQuery } from "../../../services/publishersApi";
 import Skeleton from "react-loading-skeleton";
 import SearchInput from "../../ui/SearchInput";
-import { useDispatch } from "react-redux";
-import { set } from "../../../features/articles";
-import { useGetArticlesQuery } from "../../../services/articlesApi";
 import Slider from "react-slick";
 import settings from "../../../config/reactSlickSetting";
+import { Link } from "react-router-dom";
 export default function Navigation() {
   const { data: publishers, isLoading } = useGetPublisherQuery();
-  const dispatch = useDispatch();
-  const [whichTab, setWhichTab] = useState("headlines");
-  const { data: articles } = useGetArticlesQuery(whichTab);
-  useEffect(() => {
-    if (articles) {
-      dispatch(set(articles));
-    }
-  }, [articles, dispatch, whichTab]);
+  const [whichTab, setWhichTab] = useState("");
 
   return (
     <div className="border-b-2 border-gray-900 py-3">
@@ -29,19 +20,10 @@ export default function Navigation() {
             ))
         ) : (
           <Slider {...settings} className="w-11/12 md:w-1/2 mx-6">
-            <div
-              onClick={() => {
-                setWhichTab("headlines");
-                dispatch(set(articles));
-              }}
-              className={`text-md cursor-pointer mr-4 ${
-                !whichTab && "underline"
-              }`}
-            >
-              All
-            </div>
             {publishers?.sources.map((item) => (
-              <div
+              <Link
+                to={`/:${item.name}/article`}
+                state={{ whichTab: item.id }}
                 className={`text-md cursor-pointer mr-4 ${
                   whichTab === item.id && "underline"
                 }`}
@@ -49,7 +31,7 @@ export default function Navigation() {
                 key={item.id}
               >
                 {item.name}
-              </div>
+              </Link>
             ))}
           </Slider>
         )}
