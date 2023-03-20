@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom/client";
 import "react-loading-skeleton/dist/skeleton.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -10,8 +10,9 @@ import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter } from "react-router-dom";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import { render } from "react-snapshot";
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
@@ -20,6 +21,7 @@ root.render(
         </PageWrapper>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 reportWebVitals();
