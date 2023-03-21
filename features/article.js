@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const articleSlice = createSlice({
   name: "article",
-  initialState: [],
+  initialState: {},
   reducers: {
     setArticle: (state, action) => {
       return (state = action.payload);
