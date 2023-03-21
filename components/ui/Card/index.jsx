@@ -1,14 +1,17 @@
 import getDateTime from "../../../utils/getDateTime";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setArticle } from "../../../features/article";
 export default function Card({ article }) {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const { title, urlToImage, publishedAt, source } = article;
   const date = new Date(publishedAt);
-  console.log(source.name, "source");
   return (
-    <Link
-      href={{
-        pathname: `/article/${source.name}`,
-        query: { ...article },
+    <div
+      onClick={() => {
+        dispatch(setArticle(article));
+        router.push(`/article/${source.name}`);
       }}
     >
       <div className="cursor-pointer group">
@@ -26,6 +29,6 @@ export default function Card({ article }) {
           {title}
         </h5>
       </div>
-    </Link>
+    </div>
   );
 }

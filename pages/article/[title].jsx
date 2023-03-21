@@ -1,25 +1,18 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import getDateTime from "../../utils/getDateTime";
 
 export default function Article() {
-  const router = useRouter();
-  const {
-    title,
-    description,
-    publishedAt,
-    url,
-    urlToImage,
-    article: publisherName,
-  } = router.query;
-  const date = new Date(publishedAt);
+  const state = useSelector((state) => state.article);
+  const { title, description, publishedAt, url, urlToImage, source } = state;
+  const date = new Date(publishedAt && publishedAt);
   return (
     <div className="grid md:grid-cols-3 gap-10 md:gap-20 my-12">
       <div className="flex flex-col gap-8 my-auto">
         <h1 className="text-5xl font-bold">{title}</h1>
         <p>{description}</p>
         <div className="flex justify-between">
-          <p className="font-bold">{publisherName}</p>
+          <p className="font-bold">{source.name}</p>
           <div className="flex gap-2 items-center text-gray-500 text-base font-light">
             <span>{getDateTime(date.getMonth(), date.getDay())}</span>
             <span className="block w-1 h-1 rounded-full bg-gray-700" />
