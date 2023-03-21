@@ -16,7 +16,7 @@ In this ABlOG Project project we have the following sections done:
 
 ## Technologies Used
 
-This project is mainly based on [React.js](https://reactjs.org/) plus others few libraries listed below:
+This project is mainly based on [Next.js](https://nextjs.org/) plus others few libraries listed below:
 
 - [Tailwind css](https://tailwindcss.com/)
 - [redux](https://www.npmjs.com/package/redux)
