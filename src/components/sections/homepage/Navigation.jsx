@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useGetPublisherQuery } from "../../../services/publishersApi";
-import Skeleton from "react-loading-skeleton";
 import SearchInput from "../../ui/SearchInput";
 import Slider from "react-slick";
 import settings from "../../../config/reactSlickSetting";
 import { Link } from "react-router-dom";
+import NavSkeleton from "./NavSkeleton";
 
 export default function Navigation() {
   const { data: publishers, isLoading } = useGetPublisherQuery();
@@ -14,11 +14,7 @@ export default function Navigation() {
     <div className="border-b-2 border-gray-900 py-3">
       <div className="flex flex-wrap text-base justify-center md:justify-start space-x-6">
         {isLoading === true ? (
-          Array(5)
-            .fill()
-            .map((value, index) => (
-              <Skeleton key={`tab-skeleton-${index}`} width={100} />
-            ))
+          <NavSkeleton count={5} />
         ) : (
           <Slider {...settings} className="w-11/12 md:w-1/2 mx-6">
             {publishers?.sources.map((item) => (

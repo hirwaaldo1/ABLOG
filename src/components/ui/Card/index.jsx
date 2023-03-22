@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import getDateTime from "../../utils/getDateTime";
+import getDateTime from "../../../utils/getDateTime";
 
 export default function Card({ article }) {
   const { title, urlToImage, publishedAt } = article;
