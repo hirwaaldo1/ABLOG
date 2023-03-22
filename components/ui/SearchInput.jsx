@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Search, X } from "react-feather";
+import { useDispatch } from "react-redux";
+import { searchHeadlines } from "../../features/headlines";
 
 export default function SearchInput() {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const { data: article } = useState(search);
-
-  function searchArticle(event) {
+  function findArticle(event) {
     event.preventDefault();
+    dispatch(searchHeadlines({ value: search }));
   }
 
   return (
-    <form className="flex gap-2 items-center w-full" onSubmit={searchArticle}>
+    <form className="flex gap-2 items-center w-full" onSubmit={findArticle}>
       <Search size={17} />
       <input
         type="text"
@@ -21,7 +23,10 @@ export default function SearchInput() {
       />
       {search.length > 0 && (
         <div className="flex items-center gap-1">
-          <button className="block h-full text-sm bg-gray-800 text-white rounded-sm px-2 cursor-pointer">
+          <button
+            type="submit"
+            className="block h-full text-sm bg-gray-800 text-white rounded-sm px-2 cursor-pointer"
+          >
             find
           </button>
           <X

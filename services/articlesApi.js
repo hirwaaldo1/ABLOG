@@ -13,13 +13,3 @@ export const articlesApi = async (publisher) => {
   const data = await response.json();
   return data;
 };
-
-export const searchArticlesApi = async (keyword) => {
-  const response = await fetch(
-    NEXT_PUBLIC_API_URL + `everything?q=${keyword}&pageSize=10`,
-    {
-      headers,
-    }
-  ).json();
-  return response.articles;
-};

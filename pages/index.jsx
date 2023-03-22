@@ -20,6 +20,7 @@ export default function Home({ publishers, blogList }) {
     dispatch(
       setHeadlines({
         value: blogList.articles,
+        backupValues: blogList.articles,
         isError: blogList.status === "ok" ? false : true,
         isLoading: false,
       })
