@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { ArrowLeft } from "react-feather";
 import { useDispatch } from "react-redux";
-import Blog from "../../components/sections/articlespage/Blog";
+import Blog from "../../components/sections/Blog";
 import { setArticles } from "../../features/articles";
 import { articlesApi } from "../../services/articlesApi";
 

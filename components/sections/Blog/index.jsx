@@ -4,8 +4,10 @@ import CardSkeleton from "../../ui/Card/Skeleton";
 import ErrorFound from "../../ui/ErrorFound";
 import NotFound from "../../ui/NotFound";
 
-export default function Blog() {
-  const data = useSelector((state) => state.articles);
+export default function Blog({ headlines }) {
+  const data = useSelector((state) =>
+    headlines ? state.headlines : state.articles
+  );
   return (
     <>
       {data.isError && <ErrorFound />}

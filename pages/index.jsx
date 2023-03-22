@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Blog from "../components/sections/homepage/Blog";
 import Navigation from "../components/sections/homepage/Navigation";
 import { setPublishers } from "../features/publishers";
 import { publishersApi } from "../services/publishersApi";
 import { articlesApi } from "../services/articlesApi";
 import { setHeadlines } from "../features/headlines";
+import Blog from "../components/sections/Blog";
 
 export default function Home({ publishers, blogList }) {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export default function Home({ publishers, blogList }) {
   return (
     <div>
       <Navigation />
-      <Blog />
+      <Blog headlines />
     </div>
   );
 }
