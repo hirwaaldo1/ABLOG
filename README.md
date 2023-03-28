@@ -2,7 +2,7 @@
 
 ## Live version
 
-[ABlOG Project on netlify](https://loquacious-sfogliatella-3dbe60.netlify.app/)
+[ABlOG Project on netlify](https://dev--ablog1.netlify.app/)
 
 ## Contents
 
