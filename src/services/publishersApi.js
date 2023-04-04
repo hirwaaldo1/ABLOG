@@ -4,13 +4,11 @@ export const publishersApi = createApi({
   reducerPath: "publishersApi",
   baseQuery: fetchBaseQuery({
     baseUrl: REACT_APP_API_URL,
-    headers: {
-      "X-Api-Key": REACT_APP_API_KEY,
-    },
   }),
   endpoints: (builder) => ({
     getPublisher: builder.query({
-      query: () => `top-headlines/sources?country=us`,
+      query: () =>
+        `top-headlines/sources?country=us&apiKey=${REACT_APP_API_KEY}`,
     }),
   }),
 });

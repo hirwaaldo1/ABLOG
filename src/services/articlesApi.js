@@ -4,9 +4,6 @@ export const articlesApi = createApi({
   reducerPath: "articlesApi",
   baseQuery: fetchBaseQuery({
     baseUrl: REACT_APP_API_URL,
-    headers: {
-      "X-Api-Key": REACT_APP_API_KEY,
-    },
   }),
 
   endpoints: (builder) => ({
@@ -14,15 +11,15 @@ export const articlesApi = createApi({
       query: (publisher) => {
         if (publisher) {
           return publisher === "headlines"
-            ? `top-headlines?country=us&pageSize=10`
-            : `top-headlines?sources=${publisher}&pageSize=10`;
+            ? `top-headlines?country=us&pageSize=10&apiKey=${REACT_APP_API_KEY}`
+            : `top-headlines?sources=${publisher}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
         }
       },
       transformResponse: (response) => response.articles,
     }),
     searchArticles: builder.query({
       query: (keyword) => {
-        return `everything?q=${keyword}&pageSize=10`;
+        return `everything?q=${keyword}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
       },
       transformResponse: (response) => response.articles,
     }),
