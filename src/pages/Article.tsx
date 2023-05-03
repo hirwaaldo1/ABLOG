@@ -1,16 +1,20 @@
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import getDateTime from "../utils/getDateTime";
 import { ArrowLeft } from "react-feather";
 
 export default function Article() {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const date = new Date(state.publishedAt);
   return (
     <div>
-      <Link to={-1} relative="path" className="mt-3 flex items-center gap-5">
+      <div
+        onClick={() => navigate(-1)}
+        className="mt-3 flex items-center gap-5"
+      >
         <ArrowLeft className="bg-gray-100 rounded-full" />
         <span>Back</span>
-      </Link>
+      </div>
       <div className="grid md:grid-cols-3 gap-10 md:gap-20 my-5">
         <div className="flex flex-col gap-8 my-auto">
           <h1 className="text-5xl font-bold">{state.title}</h1>

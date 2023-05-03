@@ -6,6 +6,7 @@ import Card from "../../ui/Card";
 import CardSkeleton from "../../ui/Card/Skeleton";
 import ErrorFound from "../../ui/ErrorFound";
 import NotFound from "../../ui/NotFound";
+import { ApiResponse } from "interfaces/articles";
 
 export default function Blog() {
   const {
@@ -14,7 +15,7 @@ export default function Blog() {
     isError,
   } = useGetArticlesQuery("headlines");
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.articles);
+  const data = useSelector((state: ApiResponse) => state.articles);
   useEffect(() => {
     if (headlines) {
       dispatch(setArticles(headlines));

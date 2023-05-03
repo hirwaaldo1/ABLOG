@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import NavSkeleton from "./NavSkeleton";
 
 export default function Navigation() {
-  const { data: publishers, isLoading } = useGetPublisherQuery();
+  const { data: publishers, isLoading } = useGetPublisherQuery(undefined);
   const [whichTab, setWhichTab] = useState("");
 
   return (

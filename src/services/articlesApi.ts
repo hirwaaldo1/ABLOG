@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ApiResponse } from "interfaces/articles";
 const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env;
 export const articlesApi = createApi({
   reducerPath: "articlesApi",
@@ -15,13 +16,13 @@ export const articlesApi = createApi({
             : `top-headlines?sources=${publisher}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
         }
       },
-      transformResponse: (response) => response.articles,
+      transformResponse: (response: ApiResponse) => response.articles,
     }),
     searchArticles: builder.query({
       query: (keyword) => {
         return `everything?q=${keyword}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
       },
-      transformResponse: (response) => response.articles,
+      transformResponse: (response: ApiResponse) => response.articles,
     }),
   }),
 });
