@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import getDateTime from "../../../utils/getDateTime";
+import { Article } from "interfaces/articles";
 
-export default function Card({ article }) {
+export default function Card({ article }: { article: Article }) {
   const { title, urlToImage, publishedAt } = article;
   const date = new Date(publishedAt);
+
   return (
     <Link to={`/article/:${title}`} state={article}>
       <div className="cursor-pointer group">
@@ -13,7 +15,7 @@ export default function Card({ article }) {
           alt={title}
         />
         <div className="flex gap-2 items-center text-gray-500 text-sm font-light mt-4 mb-2">
-          <span>{getDateTime(date.getMonth(), date.getDay())}</span>
+          <span>{getDateTime(date.getMonth(), date.getDate())}</span>
           <span className="block w-1 h-1 rounded-full bg-gray-700" />
           <span>{date.getMinutes()} min</span>
         </div>

@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Article } from "interfaces/articles";
 const articlesSlice = createSlice({
   name: "articles",
   initialState: [],
   reducers: {
-    setArticles: (state, action) => {
+    setArticles: (state: Array<Article>, action: PayloadAction<Article[]>) => {
       return (state = action.payload);
     },
   },

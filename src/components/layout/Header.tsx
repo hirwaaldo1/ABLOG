@@ -1,6 +1,7 @@
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header(): ReactElement {
   return (
     <div className="flex justify-between items-center py-3 border-b-[3px] border-gray-900">
       <Link className="flex cursor-pointer" to="/">
