@@ -47,4 +47,5 @@ export const articlesApi = createApi({
     }),
   }),
 });
+
 export const { useGetArticlesQuery, useSearchArticlesQuery } = articlesApi;
