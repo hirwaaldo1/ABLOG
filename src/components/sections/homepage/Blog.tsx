@@ -26,11 +26,13 @@ export default function Blog(): React.ReactElement {
   return (
     <>
       {isError && <ErrorFound />}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-5 relative">
         {isLoading ? (
           <CardSkeleton count={10} />
         ) : data?.length === 0 ? (
-          <NotFound />
+          <div className="w-full h-full m-auto absolute">
+            <NotFound />
+          </div>
         ) : (
           data.map((article, index) => {
             return <Card key={`card-index-${index}`} article={article} />;

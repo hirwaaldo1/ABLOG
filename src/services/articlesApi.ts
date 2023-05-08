@@ -40,7 +40,8 @@ export const articlesApi = createApi({
     }),
     searchArticles: builder.query({
       query: (keyword: string) => {
-        return `everything?q=${keyword}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
+        if (keyword)
+          return `everything?q=${keyword}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
       },
       transformResponse: (response: Articles) => response.articles,
     }),
