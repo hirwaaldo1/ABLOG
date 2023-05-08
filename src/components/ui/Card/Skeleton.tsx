@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 
-export default function CardSkeleton({ count }) {
+export default function CardSkeleton({ count }: { count?: number }) {
   return (
     <>
       {Array(count)

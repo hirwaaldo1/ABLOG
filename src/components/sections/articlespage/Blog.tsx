@@ -4,7 +4,11 @@ import CardSkeleton from "../../ui/Card/Skeleton";
 import ErrorFound from "../../ui/ErrorFound";
 import NotFound from "../../ui/NotFound";
 
-export default function Blog({ whichTab }) {
+export default function Blog({
+  whichTab,
+}: {
+  whichTab: string;
+}): React.ReactElement {
   const { data, isError, isLoading } = useGetArticlesQuery(whichTab);
 
   return (

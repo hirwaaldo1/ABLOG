@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Search, X } from "react-feather";
 import { useDispatch } from "react-redux";
 import { setArticles } from "../../features/articles";
 import { useSearchArticlesQuery } from "../../services/articlesApi";
 
-export default function SearchInput() {
+export default function SearchInput(): React.ReactElement {
   const [search, setSearch] = useState("");
   const { data: article } = useSearchArticlesQuery(search);
   const dispatch = useDispatch();
@@ -19,7 +19,9 @@ export default function SearchInput() {
       <Search size={17} />
       <input
         type="text"
-        onChange={(event) => setSearch(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setSearch(event.target.value)
+        }
         value={search}
         className="outline-none placeholder:text-black"
         placeholder="Search..."
@@ -32,7 +34,7 @@ export default function SearchInput() {
           <X
             size={16}
             className="bg-gray-300 bg-opacity-60 rounded-full p-0.5 cursor-pointer"
-            onClick={() => setSearch("")}
+            onClick={(): void => setSearch("")}
           />
         </div>
       )}

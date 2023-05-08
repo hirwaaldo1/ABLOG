@@ -12,6 +12,6 @@ const monthNames = [
   "Nov",
   "Dec",
 ];
-export default function getDateTime(month, day) {
-  return monthNames[month] + " " + day;
+export default function getDateTime(month: number, day: number) {
+  return monthNames[month] + " " + (day + 1);
 }

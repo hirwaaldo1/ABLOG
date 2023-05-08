@@ -13,6 +13,6 @@ export interface Source {
   name: string;
 }
 
-export interface ApiResponse {
+export interface Articles {
   articles: Article[];
 }

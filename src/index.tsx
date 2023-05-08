@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
-import PageWrapper from "./components/wrappers/PageWrapper";
+import Wrapper from "./components/wrappers/PageWrapper";
 import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,9 +17,9 @@ root.render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <PageWrapper>
+        <Wrapper as="section">
           <App />
-        </PageWrapper>
+        </Wrapper>
       </BrowserRouter>
     </Provider>
   </StrictMode>

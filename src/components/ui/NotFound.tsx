@@ -1,4 +1,4 @@
-export default function NotFound() {
+export default function NotFound(): React.ReactElement {
   return (
     <div className="flex justify-center items-center flex-col h-[80svh] w-full">
       <div className="flex w-72 h-72 justify-center bg-[#EEF0F4] items-center rounded-full">

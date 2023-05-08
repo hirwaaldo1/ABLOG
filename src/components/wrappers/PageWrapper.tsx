@@ -1,11 +1,17 @@
 import Header from "../layout/Header";
+type Props = React.PropsWithChildren<{
+  as: "div" | "section" | "aside";
+}>;
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({
+  as: Component = "section",
+  children,
+}: Props): React.ReactElement => {
   return (
-    <section className="max-w-screen-2xl w-11/12 mx-auto">
+    <Component className="max-w-screen-2xl w-11/12 mx-auto">
       <Header />
       {children}
-    </section>
+    </Component>
   );
 };
 

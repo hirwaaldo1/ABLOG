@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Dispatch, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setArticles } from "../../../features/articles";
 import { useGetArticlesQuery } from "../../../services/articlesApi";
@@ -6,16 +6,17 @@ import Card from "../../ui/Card";
 import CardSkeleton from "../../ui/Card/Skeleton";
 import ErrorFound from "../../ui/ErrorFound";
 import NotFound from "../../ui/NotFound";
-import { ApiResponse } from "interfaces/articles";
+import { Articles } from "interfaces/articles";
+import { AnyAction } from "redux";
 
-export default function Blog() {
+export default function Blog(): React.ReactElement {
   const {
     data: headlines,
     isLoading,
     isError,
   } = useGetArticlesQuery("headlines");
-  const dispatch = useDispatch();
-  const data = useSelector((state: ApiResponse) => state.articles);
+  const dispatch: Dispatch<AnyAction> = useDispatch();
+  const data = useSelector((state: Articles) => state.articles);
   useEffect(() => {
     if (headlines) {
       dispatch(setArticles(headlines));

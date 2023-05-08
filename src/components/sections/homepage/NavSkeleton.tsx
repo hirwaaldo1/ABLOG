@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 
-export default function NavSkeleton({ count }) {
+export default function NavSkeleton({ count }: { count: number }) {
   return (
     <>
       {Array(count)

@@ -1,5 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ApiResponse } from "interfaces/articles";
+import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
+import {
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+  FetchBaseQueryMeta,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
+import { Articles } from "interfaces/articles";
 const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env;
 export const articlesApi = createApi({
   reducerPath: "articlesApi",
@@ -7,22 +15,34 @@ export const articlesApi = createApi({
     baseUrl: REACT_APP_API_URL,
   }),
 
-  endpoints: (builder) => ({
+  endpoints: (
+    builder: EndpointBuilder<
+      BaseQueryFn<
+        string | FetchArgs,
+        unknown,
+        FetchBaseQueryError,
+        {},
+        FetchBaseQueryMeta
+      >,
+      never,
+      "articlesApi"
+    >
+  ) => ({
     getArticles: builder.query({
-      query: (publisher) => {
+      query: (publisher: string) => {
         if (publisher) {
           return publisher === "headlines"
             ? `top-headlines?country=us&pageSize=10&apiKey=${REACT_APP_API_KEY}`
             : `top-headlines?sources=${publisher}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
         }
       },
-      transformResponse: (response: ApiResponse) => response.articles,
+      transformResponse: (response: Articles) => response.articles,
     }),
     searchArticles: builder.query({
-      query: (keyword) => {
+      query: (keyword: string) => {
         return `everything?q=${keyword}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
       },
-      transformResponse: (response: ApiResponse) => response.articles,
+      transformResponse: (response: Articles) => response.articles,
     }),
   }),
 });
