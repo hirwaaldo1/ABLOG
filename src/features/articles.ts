@@ -4,7 +4,7 @@ const articlesSlice = createSlice({
   name: "articles",
   initialState: [],
   reducers: {
-    setArticles: (state: Array<Article>, action: PayloadAction<Article[]>) => {
+    setArticles: (state: Article[], action: PayloadAction<Article[]>) => {
       return (state = action.payload);
     },
   },

@@ -1,9 +1,9 @@
 import { ArrowLeft } from "react-feather";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Location, useLocation } from "react-router-dom";
 import Blog from "../components/sections/articlespage/Blog";
 
-export default function Articles() {
-  const { state } = useLocation();
+export default function Articles(): React.ReactElement {
+  const { state }: Location = useLocation();
   return (
     <div>
       <Link to={"/"} className="my-3 flex items-center gap-5">

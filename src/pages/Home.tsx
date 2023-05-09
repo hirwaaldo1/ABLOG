@@ -1,6 +1,6 @@
 import Blog from "../components/sections/homepage/Blog";
 import Navigation from "../components/sections/homepage/Navigation";
-export default function Home() {
+export default function Home(): React.ReactElement {
   return (
     <main>
       <Navigation />

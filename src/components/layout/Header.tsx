@@ -5,8 +5,8 @@ export default function Header(): ReactElement {
   return (
     <div className="flex justify-between items-center py-3 border-b-[3px] border-gray-900">
       <Link className="flex cursor-pointer" to="/">
-        <span className="text-2xl font-semibold">A</span>
-        <span className="text-2xl font-normal">BlOG</span>
+        <span className="text-2xl font-normal">A</span>
+        <span className="text-2xl font-semibold">BlOG</span>
       </Link>
       <div className="">
         <Link

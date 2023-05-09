@@ -35,19 +35,21 @@ export default function SearchInput(): React.ReactElement {
       if (event.target.value.length > 0) {
         setLoading(false);
         setKeyword(event.target.value);
+      } else {
+        dispatch(setArticles(headlines));
       }
     });
   }
 
   return (
-    <form className="flex gap-2 items-center w-full">
-      <Search size={17} />
+    <div className="flex gap-2 max-w-xl m-auto justify-between items-center bg-[#F4F4F5] p-2 rounded-sm">
+      <Search size={17} color="#696A75" />
       <input
         type="text"
         onChange={onChangleText}
         value={search}
-        className="outline-none placeholder:text-black"
-        placeholder="Search..."
+        className="outline-none bg-transparent placeholder:text-[#696A75] placeholder:font-medium w-full text-2xl "
+        placeholder="Type any key word you want to search here..."
       />
       {search.length > 0 && (
         <div className="flex items-center gap-1">
@@ -56,7 +58,7 @@ export default function SearchInput(): React.ReactElement {
           ) : (
             <X
               size={16}
-              className="bg-gray-300 bg-opacity-60 rounded-full p-0.5 cursor-pointer"
+              className="bg-transparent rounded-full p-0.5 cursor-pointer"
               onClick={(): void => {
                 setSearch("");
                 setKeyword(undefined);
@@ -66,6 +68,6 @@ export default function SearchInput(): React.ReactElement {
           )}
         </div>
       )}
-    </form>
+    </div>
   );
 }

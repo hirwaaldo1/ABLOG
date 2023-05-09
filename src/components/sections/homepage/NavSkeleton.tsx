@@ -5,7 +5,7 @@ export default function NavSkeleton({ count }: { count: number }) {
     <>
       {Array(count)
         .fill("")
-        .map((_, index) => (
+        .map((_, index: number) => (
           <Skeleton key={`tab-skeleton-${index}`} width={100} />
         ))}
     </>

@@ -32,7 +32,7 @@ export const articlesApi = createApi({
       query: (publisher: string) => {
         if (publisher) {
           return publisher === "headlines"
-            ? `top-headlines?country=us&pageSize=10&apiKey=${REACT_APP_API_KEY}`
+            ? `top-headlines?country=us&pageSize=11&apiKey=${REACT_APP_API_KEY}`
             : `top-headlines?sources=${publisher}&pageSize=10&apiKey=${REACT_APP_API_KEY}`;
         }
       },

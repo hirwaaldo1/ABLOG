@@ -1,11 +1,16 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import {
+  useNavigate,
+  useLocation,
+  NavigateFunction,
+  Location,
+} from "react-router-dom";
 import getDateTime from "../utils/getDateTime";
 import { ArrowLeft } from "react-feather";
 
-export default function Article() {
-  const { state } = useLocation();
-  const navigate = useNavigate();
-  const date = new Date(state.publishedAt);
+export default function Article(): React.ReactElement {
+  const { state }: Location = useLocation();
+  const navigate: NavigateFunction = useNavigate();
+  const date: Date = new Date(state.publishedAt);
   return (
     <div>
       <div

@@ -8,7 +8,7 @@ const PageWrapper = ({
   children,
 }: Props): React.ReactElement => {
   return (
-    <Component className="max-w-screen-2xl w-11/12 mx-auto">
+    <Component className="max-w-screen-xl w-11/12 mx-auto">
       <Header />
       {children}
     </Component>
